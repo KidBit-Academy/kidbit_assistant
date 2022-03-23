@@ -1,0 +1,1 @@
+from kidbit_assistant.main import my_print
