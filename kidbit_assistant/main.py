@@ -58,7 +58,7 @@ def speak(phrase, debug = True):
     __engine.runAndWait()
 
 ############# Listening #################
-def listen_voice():
+def listen():
     voice_input = ""
     try:
         print("Listening...")

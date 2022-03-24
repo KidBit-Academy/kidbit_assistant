@@ -12,7 +12,7 @@ def get_time(voice):
     return time_in_ist
     
 while True:
-    voice = listen_voice()
+    voice = listen()
     if "alexa" in voice:
     
         if "news for today" in voice:
