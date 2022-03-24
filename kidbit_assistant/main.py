@@ -24,7 +24,8 @@ def __listen_all_voices__():
         index += 1
 
 def set_voice(voice_num):
-    __engine.setProperty("voice", __voices[voice_num].id)
+    if voice_num in [0, 7, 10, 11, 17, 28, 32, 33, 37, 40, 41]:
+        __engine.setProperty("voice", __voices[voice_num].id)
 
 ############# Misc Functions #################
 def erase_from_voice(voice, phrase, debug = False):
@@ -80,7 +81,7 @@ def get_google_news(debug = False):
         speak(news['title'])
 
 ############# Time Functions #################
-def get_time_in_gst(debug = False):
+def get_time_in_gmt(debug = False):
     time = datetime.datetime.now(datetime.timezone.utc)
     if debug:
         print(time)

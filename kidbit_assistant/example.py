@@ -4,8 +4,8 @@ def get_time(voice):
     time_in_ist = "" 
     try:
         code = "ist"
-        time_in_gst = get_time_in_gst()
-        time_in_ist = convert_time(time_in_gst, code)
+        time_in_gmt = get_time_in_gmt()
+        time_in_ist = convert_time(time_in_gmt, code)
     except:
         print("Cannot get time")
     
