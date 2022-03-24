@@ -23,6 +23,9 @@ def __listen_all_voices__():
         __engine.runAndWait()
         index += 1
 
+def set_voice(voice_num):
+    __engine.setProperty("voice", __voices[voice_num].id)
+
 ############# Misc Functions #################
 def erase_from_voice(voice, phrase, debug = False):
     if voice == None or voice.strip() == '': 
@@ -45,7 +48,7 @@ def get_joke():
 
 ############# Speaking #################
 def speak(phrase, debug = True):
-    if phrase == None or phrase.strip() == '': 
+    if phrase == None or phrase.strip() == '':
         return
 
     phrase = phrase.strip()
@@ -55,21 +58,20 @@ def speak(phrase, debug = True):
     __engine.runAndWait()
 
 ############# Listening #################
-def take_voice_input_begininng_with(assistant_name = "alexa"):
+def listen_voice():
     voice_input = ""
     try:
         print("Listening...")
         with sr.Microphone() as source:
             voice = __listener.listen(source)
             voice_input = __listener.recognize_google(voice)
-            voice_input = erase_from_voice(voice_input, assistant_name)
             voice_input = voice_input.lower()
     except:
         print("Error in taking voice input")
     return voice_input
 
 ############# Google News #################
-def get_google_news(debug=False):
+def get_google_news(debug = False):
     speak("Fetching Live News")
     client = gnewsclient.NewsClient(language = 'english',
                                     location = 'India',
@@ -202,49 +204,3 @@ def contains_exit_phrase(phrase):
     if phrase in __ext_phrases:
         return True
     return False
-
-
-
-# def tell_time():
-#     time = datetime.datetime.now().strftime("%I:%M %p")
-#     talk("Current time is " + time)
-
-# def play_song(voice_input):
-#     filtered = erase_phrase_from_sentence(voice, "play song")
-#     pywhatkit.playonyt(filtered)
-
-# def tell_about(voice_input):
-#     try:
-#         interest = erase_phrase_from_sentence(voice_input, "tell me about")
-#         info = wikipedia.summary(interest, 1)
-#         talk(info)
-#     except:
-#         talk("Cannot find relevant information. Please try again later.")
-# while True:
-#     voice_input = take_voice_input()
-#     print(voice_input)
-
-#     if "time" in voice_input:
-#         tell_time()
-
-#     elif "news for today" in voice_input:
-#         tell_news()
-    
-#     elif "play" in voice_input:
-#         play_song(voice_input)
-    
-#     elif "tell me about" in voice_input:
-#         tell_about(voice_input)
-    
-#     elif "joke" in voice_input:
-#         talk(pyjokes.get_joke())
-
-#     elif "where are we" in voice_input:
-#         talk("We are in a session with D A V teachers. They are liking it.")
-    
-#     elif "quit" in voice_input or "exit" in voice_input:
-#         talk("Goodbye! Have a great day!")
-#         break
-    
-#     else:
-#         talk("Sorry! I did not follow. Can you repeat?")
