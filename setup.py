@@ -3,13 +3,13 @@ import setuptools
 version = '1.0.5'
 setuptools.setup(
   name = 'kidbit_assistant',
-  version = '1.0.5',
+  version = version,
   license='MIT',
   description = 'Design your Own Assistant',
   author = 'KidBit',
   author_email = 'kidbitacademy@gmail.com',   
   url = 'https://github.com/KidBit-Academy/kidbit_assistant',
-  download_url = f"https://github.com/KidBit-Academy/kidbit_assistant/archive/refs/tags/v{version}.tar.gz",
+  download_url = 'https://github.com/KidBit-Academy/kidbit_assistant/archive/refs/tags/v' + version + '.tar.gz',
   keywords = ['ALEXA', 'BOT', 'CODING', 'KIDS', 'KIDBIT'],  
   install_requires=[        
           'beautifulsoup4==4.10.0',
