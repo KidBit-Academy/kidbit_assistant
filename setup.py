@@ -10,7 +10,7 @@ setuptools.setup(
   author_email = 'kidbitacademy@gmail.com',   
   url = 'https://github.com/KidBit-Academy/kidbit_assistant',
   download_url = 'https://github.com/KidBit-Academy/kidbit_assistant/archive/refs/tags/v' + version + '.tar.gz',
-  keywords = ['ALEXA', 'BOT', 'CODING', 'KIDS', 'KIDBIT'],  
+  keywords = ['ALEXA', 'BOT', 'CODING', 'KIDS', 'KIDBIT', 'ASSISTANT'],  
   install_requires=[        
           'beautifulsoup4==4.10.0',
           'certifi==2021.10.8',
