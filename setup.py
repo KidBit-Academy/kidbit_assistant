@@ -1,16 +1,17 @@
 import setuptools
 
+version = '1.0.5'
 setuptools.setup(
-  name = 'kidbit_assistant',         # How you named your package folder (MyLib)
-  version = '0.4',      # Start with a small number and increase it with every change you make
-  license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
-  description = 'Design your Own Assistant',   # Give a short description about your library
-  author = 'KidBit',                   # Type in your name
-  author_email = 'kidbitacademy@gmail.com',      # Type in your E-Mail
-  url = 'https://github.com/KidBit-Academy/kidbit_assistant',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/KidBit-Academy/kidbit_assistant/archive/refs/tags/v1.0.4.tar.gz',    # I explain this later on
-  keywords = ['ALEXA', 'BOT', 'CODING', 'KIDS', 'KIDBIT'],   # Keywords that define your package best
-  install_requires=[            # I get to this in a second
+  name = 'kidbit_assistant',
+  version = '1.0.5',
+  license='MIT',
+  description = 'Design your Own Assistant',
+  author = 'KidBit',
+  author_email = 'kidbitacademy@gmail.com',   
+  url = 'https://github.com/KidBit-Academy/kidbit_assistant',
+  download_url = f"https://github.com/KidBit-Academy/kidbit_assistant/archive/refs/tags/v{version}.tar.gz",
+  keywords = ['ALEXA', 'BOT', 'CODING', 'KIDS', 'KIDBIT'],  
+  install_requires=[        
           'beautifulsoup4==4.10.0',
           'certifi==2021.10.8',
           'charset-normalizer==2.0.12',
