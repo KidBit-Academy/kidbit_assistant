@@ -1,5 +1,5 @@
 def my_print(x):
-    print("MY ", x)
+    print("MY_4: ", x)
 
 if __name__ == "__main__":
-    print("Hello World!")
+    print("Hello World! 4")

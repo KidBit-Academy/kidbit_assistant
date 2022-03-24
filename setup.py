@@ -1,19 +1,14 @@
 import setuptools
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
-
 setuptools.setup(
   name = 'kidbit_assistant',         # How you named your package folder (MyLib)
-  version = '0.1',      # Start with a small number and increase it with every change you make
+  version = '0.4',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Design your Own Assistant',   # Give a short description about your library
   author = 'KidBit',                   # Type in your name
   author_email = 'kidbitacademy@gmail.com',      # Type in your E-Mail
-  long_description=long_description,
-  long_description_content_type="text/markdown",
   url = 'https://github.com/KidBit-Academy/kidbit_assistant',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/KidBit-Academy/kidbit_assistant/archive/refs/tags/v1.0.3.tar.gz',    # I explain this later on
+  download_url = 'https://github.com/KidBit-Academy/kidbit_assistant/archive/refs/tags/v1.0.4.tar.gz',    # I explain this later on
   keywords = ['ALEXA', 'BOT', 'CODING', 'KIDS', 'KIDBIT'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
           'beautifulsoup4==4.10.0',
@@ -183,7 +178,6 @@ setuptools.setup(
     'Programming Language :: Python :: 3.5',
     'Programming Language :: Python :: 3.6',
   ],
-  package_dir={"": "kidbit_assistant/"},
-  packages=setuptools.find_packages(where="kidbit_assistant/"),
+  packages=["kidbit_assistant"],
   python_requires=">=3.6",
 )
