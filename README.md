@@ -12,16 +12,16 @@ After installing the `kidbit_assistant` package, import the package into your pr
 
 ## List of Methods
 The `kidbit_assistant` package provides you with a list of in-built methods which can be leveraged to make your own customized assistant. All the methods are defined below.
-#### listen()
+
+##### listen()
 Listens for the input from the microphone.
 
-#### speak(text)
+##### speak(text)
 Speaks out `text` variable you provide as input.
 
-#### set_voice(number)
+##### set_voice(number)
 Pass a `number` to set a specific voice for your assistant. Every `number` corresponds to a unique voice as defined below in the list.
-
-**Set of valid `numbers`:**
+>**Set of valid `numbers`:**
 ```
 NUMBER      PERSON        ACCENT
 0           Alex        English US
@@ -37,24 +37,26 @@ NUMBER      PERSON        ACCENT
 41          Victoria    English US
 ```
 
-### get_google_news()
+##### get_google_news()
 Fetches live Google News.
 
-### get_joke()
+##### get_joke()
 Fetches a random computer science joke.
 
-### play_on_youtube(song)
+
+##### play_on_youtube(song)
 Plays `song` on YouTube.
 
-### get_time_in_gmt()
+##### get_time_in_gmt()
 Gets the current time in GMT.
 
-### erase_from_voice(voice, phrase_1, phrase_2, ...)
+##### erase_from_voice(voice, phrase_1, phrase_2, ...)
 Erases all the occurences of `phrase_1`, `phrase_2` and subsequent phrases from `voice` and returns it.
 
-### convert_time(utc_time, code)
+
+##### convert_time(utc_time, code)
 Converts the `utc_time` provided to the timezone with the `code` provided.
-**List of acceptable codes:**
+>**List of acceptable `code`:**
 ```
 CODES       TIMEZONE
 ist         Indian Standard Time
@@ -69,7 +71,6 @@ sast        South African Standard Time
 ```
 
 ## Sample Code
-
 ```
 from kidbit_assistant import *
 voice = listen()
