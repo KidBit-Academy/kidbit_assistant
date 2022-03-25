@@ -1,14 +1,8 @@
 import setuptools
 import os
 import platform
-import subprocess
-import sys
 
-# def install(package, cmd):
-#     subprocess.check_call([sys.executable, "-m", cmd, "install", package])
-
-
-version = '1.1.7'
+version = '1.1.8'
 setuptools.setup(
   name = 'kidbit_assistant',
   version = version,
@@ -28,7 +22,8 @@ setuptools.setup(
           'pyttsx3==2.90',
           'Levenshtein==0.18.1',
           'Flask==2.0.3',
-          'pipwin==0.5.2; platform_system=="Windows"'
+          'pipwin==0.5.2; platform_system=="Windows"',
+          'pyaudio==0.2.11; platform_system!="Windows"'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
