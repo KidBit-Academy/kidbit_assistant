@@ -28,8 +28,7 @@ setuptools.setup(
           'pyttsx3==2.90',
           'Levenshtein==0.18.1',
           'Flask==2.0.3',
-          'pipwin==0.5.2; platform_system=="Windows"',
-          'PyAudio==0.2.11'
+          'pipwin==0.5.2; platform_system=="Windows"'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
