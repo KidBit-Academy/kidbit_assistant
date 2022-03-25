@@ -73,13 +73,13 @@ def speak_single(phrase, debug = True):
     if phrase == None or phrase.strip() == '':
         return
     phrase = phrase.strip()
+
+    if debug:
+        print(phrase)
     
     tts = gTTS(phrase, lang = 'en', tld = __gTTS_lang[__default_voice])
     tts.save("rec.mp3")
     playsound("rec.mp3")
-
-    if debug:
-        print(phrase)
 
 ############# Listening #################
 def listen():
