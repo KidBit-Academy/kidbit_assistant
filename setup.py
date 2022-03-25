@@ -1,6 +1,6 @@
 import setuptools
 
-version = '1.1.2'
+version = '1.1.3'
 setuptools.setup(
   name = 'kidbit_assistant',
   version = version,
@@ -16,8 +16,7 @@ setuptools.setup(
           'pywhatkit==5.3',
           'wikipedia==1.4.0',
           'pyjokes==0.6.0',
-          'gnewsclient==1.12',
-          'PyAudio==0.2.11'
+          'gnewsclient==1.12'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
