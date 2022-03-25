@@ -7,6 +7,7 @@ from gtts import gTTS
 from playsound import playsound
 import webbrowser
 import urllib.parse
+import os
 
 __listener = sr.Recognizer()
 __default_voice = 40
@@ -80,6 +81,7 @@ def speak_single(phrase, debug = True):
     tts = gTTS(phrase, lang = 'en', tld = __gTTS_lang[__default_voice])
     tts.save("rec.mp3")
     playsound("rec.mp3")
+    os.remove("rec.mp3")
 
 ############# Listening #################
 def listen():

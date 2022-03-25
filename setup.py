@@ -14,7 +14,7 @@ setuptools.setup(
   install_requires=[        
           'SpeechRecognition==3.8.1',
           'gTTS==2.2.4',
-          'playsound==1.3.0',
+          'playsound==1.2.2',
           'wikipedia==1.4.0',
           'pyjokes==0.6.0',
           'gnewsclient==1.12'
