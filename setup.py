@@ -8,7 +8,7 @@ import sys
 #     subprocess.check_call([sys.executable, "-m", cmd, "install", package])
 
 
-version = '1.1.6'
+version = '1.1.7'
 setuptools.setup(
   name = 'kidbit_assistant',
   version = version,
