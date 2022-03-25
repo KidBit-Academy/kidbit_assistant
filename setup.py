@@ -1,6 +1,6 @@
 import setuptools
 
-version = '1.0.10'
+version = '1.0.11'
 setuptools.setup(
   name = 'kidbit_assistant',
   version = version,
@@ -13,7 +13,7 @@ setuptools.setup(
   keywords = ['ALEXA', 'BOT', 'CODING', 'KIDS', 'KIDBIT', 'ASSISTANT'],  
   install_requires=[        
           'SpeechRecognition==3.8.1',
-          'pyttsx3==2.90',
+          'pyttsx3',
           'pywhatkit==5.3',
           'wikipedia==1.4.0',
           'pyjokes==0.6.0',
