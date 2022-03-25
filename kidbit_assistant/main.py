@@ -1,30 +1,35 @@
 import speech_recognition as sr
-import pyttsx3
-import pywhatkit
 import datetime
 import wikipedia
 import pyjokes
 from gnewsclient import gnewsclient
+from gtts import gTTS
+from playsound import playsound
+import webbrowser
+import urllib.parse
 
 __listener = sr.Recognizer()
-__engine = pyttsx3.init()
-__voices = __engine.getProperty("voices")
-__engine.setProperty("voice", __voices[40].id) # 40 is for en_IN, Female voice
-__ext_responses = {}
-__ext_phrases = []
+__default_voice = 40
 
-def __listen_all_voices__():
-    index = 0
-    for voice in __voices:
-        print(i, voice, voice.id)
-        __engine.setProperty("voice", voice.id)
-        __engine.say("Hello World!")
-        __engine.runAndWait()
-        index += 1
+__gTTS_lang = {
+        0: 'com',
+        7: 'co.uk',
+        10: 'ca',
+        11: 'com',
+        17: 'com.au',
+        28: 'ie',
+        32: 'co.in',
+        33: 'com',
+        37: 'co.za',
+        40: 'co.in',
+        41: 'com'
+    }
 
 def set_voice(voice_num):
+    global __default_voice
+
     if voice_num in [0, 7, 10, 11, 17, 28, 32, 33, 37, 40, 41]:
-        __engine.setProperty("voice", __voices[voice_num].id)
+        __default_voice = voice_num
     else:
         raise Exception("No voice number found!")
 
@@ -63,14 +68,19 @@ def speak(phrase, debug = True):
         speak_single(phrase)
         
 def speak_single(phrase, debug = True):
+    global __gTTS_lang, __default_voice
+
     if phrase == None or phrase.strip() == '':
         return
     phrase = phrase.strip()
+    
+    tts = gTTS(phrase, lang = 'en', tld = __gTTS_lang[__default_voice])
+    tts.save("rec.mp3")
+    playsound("rec.mp3")
 
     if debug:
         print(phrase)
-    __engine.say(phrase)
-    __engine.runAndWait()
+
 ############# Listening #################
 def listen():
     voice_input = ""
@@ -159,56 +169,6 @@ def convert_time(utc_time, code, debug = False):
 ############# Playing Song #################
 def play_on_youtube(song):
     speak("playing " + song)
-    pywhatkit.playonyt(song)
+    webbrowser.open("https://www.youtube.com/results?search_query=" + urllib.parse.quote_plus(song))
 
-############# Custom Response #################
-def save_response(phrase, response, debug = False):
-    global __ext_responses
     
-    if phrase == None or phrase.strip() == '': 
-        return
-    
-    __ext_responses[phrase.strip()] = response.strip()
-
-
-def __contains_response(phrase, debug = False):
-    global __ext_responses
-
-    if phrase == None or phrase.strip() == '': 
-        return False
-    
-    phrase = phrase.strip()
-    return (phrase in __ext_responses)
-    
-def get_response(phrase, debug = False):
-    global __ext_responses
-
-    if phrase == None or phrase.strip() == '': 
-        return ""
-    
-    phrase = phrase.strip()
-    if __contains_response(phrase, debug):
-        if debug:
-            print("Response: ", __ext_responses[phrase])
-        return __ext_responses[phrase]
-    else:
-        if debug:
-            print("Does not contain phrases")
-        return ""
-
-############# Exit #################
-def add_exit_phrases(phrase):
-    global __ext_phrases
-    
-    __ext_phrases.append(phrase)
-
-def contains_exit_phrase(phrase):
-    global __ext_phrases
-
-    if phrase == None or phrase.strip() == '': 
-        return False
-    
-    phrase = phrase.strip()
-    if phrase in __ext_phrases:
-        return True
-    return False
