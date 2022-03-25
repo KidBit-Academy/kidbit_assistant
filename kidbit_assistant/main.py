@@ -4,7 +4,6 @@ import pywhatkit
 import datetime
 import wikipedia
 import pyjokes
-import gnewsclient
 from gnewsclient import gnewsclient
 
 __listener = sr.Recognizer()
