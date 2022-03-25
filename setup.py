@@ -1,6 +1,14 @@
 import setuptools
+import os
+import platform
+import subprocess
+import sys
 
-version = '1.1.5'
+# def install(package, cmd):
+#     subprocess.check_call([sys.executable, "-m", cmd, "install", package])
+
+
+version = '1.1.6'
 setuptools.setup(
   name = 'kidbit_assistant',
   version = version,
@@ -36,3 +44,6 @@ setuptools.setup(
   packages=["kidbit_assistant"],
   python_requires=">=3.6",
 )
+
+if platform.system() == 'Windows':
+  os.system("pipwin install pyaudio")
