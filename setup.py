@@ -1,6 +1,6 @@
 import setuptools
 
-version = '1.0.8'
+version = '1.0.9'
 setuptools.setup(
   name = 'kidbit_assistant',
   version = version,

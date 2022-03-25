@@ -26,23 +26,28 @@ def __listen_all_voices__():
 def set_voice(voice_num):
     if voice_num in [0, 7, 10, 11, 17, 28, 32, 33, 37, 40, 41]:
         __engine.setProperty("voice", __voices[voice_num].id)
+    else:
+        raise Exception("No voice number found!")
 
 ############# Misc Functions #################
-def erase_from_voice(voice, phrase, debug = False):
+def erase_from_voice(voice, *phrases, debug = False):
     if voice == None or voice.strip() == '': 
         return ""
 
-    if phrase == None or phrase.strip() == '': 
+    if phrases == None: 
         return ""
 
-    voice = voice.strip()
-    phrase = phrase.strip()
+    voice_filtered = voice.strip()
+
+    for arg in phrases:
+        voice_filtered = voice_filtered.replace(arg,"").strip()
     
     if debug:
         print("Voice:", voice)
         print("Phrase:", phrase)
+        print("Voice filtered:", voice_filtered)
     
-    return voice.replace(phrase, "").strip()
+    return voice_filtered
 
 def get_joke():
     return pyjokes.get_joke()
@@ -53,11 +58,20 @@ def speak(phrase, debug = True):
         return
 
     phrase = phrase.strip()
+    if "\n" in phrase:
+        [speak_single(curr, debug) for curr in phrase.split("\n")]
+    else:
+        speak_single(phrase)
+        
+def speak_single(phrase, debug = True):
+    if phrase == None or phrase.strip() == '':
+        return
+    phrase = phrase.strip()
+
     if debug:
         print(phrase)
     __engine.say(phrase)
     __engine.runAndWait()
-
 ############# Listening #################
 def listen():
     voice_input = ""
@@ -73,12 +87,16 @@ def listen():
 
 ############# Google News #################
 def get_google_news(debug = False):
-    speak("Fetching Live News")
     client = gnewsclient.NewsClient(language = 'english',
                                     location = 'India',
                                     max_results=10)
+    news_to_str = ''
     for news in client.get_news():
-        speak(news['title'])
+        news_to_str += (news['title'] + ".\n")
+
+    if debug:
+        print("News To Str: ", news_to_str)
+    return news_to_str
 
 ############# Time Functions #################
 def get_time_in_gmt(debug = False):
@@ -143,16 +161,6 @@ def convert_time(utc_time, code, debug = False):
 def play_on_youtube(song):
     speak("playing " + song)
     pywhatkit.playonyt(song)
-
-def identify_song(voice):
-    if voice == None or voice.strip() == '': 
-        return ""
-    
-    voice = voice.strip()
-    filtered = erase_from_voice(voice, "play song")
-    filtered = erase_from_voice(filtered, "play")
-    filtered = erase_from_voice(filtered, "song")
-    return filtered
 
 ############# Custom Response #################
 def save_response(phrase, response, debug = False):

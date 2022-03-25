@@ -16,6 +16,7 @@ while True:
     if "alexa" in voice:
     
         if "news for today" in voice:
+            speak("Fetching Live News")
             news = get_google_news()
             speak(news)
 
@@ -28,8 +29,8 @@ while True:
             speak(joke)
 
         elif "play song" in voice:
-            song = identify_song(voice)
-            speak("Playing song ")
+            speak("Playing song")
+            song = erase_from_voice(voice, "alexa", "play song")
             play_on_youtube(song)
 
         elif "where are we" in voice:
