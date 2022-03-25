@@ -1,5 +1,7 @@
 from main import *
 
+import sys
+    
 def get_time(voice):
     time_in_ist = "" 
     try:
@@ -10,38 +12,43 @@ def get_time(voice):
         print("Cannot get time")
     
     return time_in_ist
-    
+
 while True:
     voice = listen()
-    if "alexa" in voice:
-    
-        if "news for today" in voice:
-            speak("Fetching Live News")
-            news = get_google_news()
-            speak(news)
+    print(voice)
+    try:
+        if "alexa" in voice:
+            if "news" in voice:
+                speak("Fetching Live News")
+                news = get_google_news()
+                speak(news)
 
-        elif "current time" in voice:
-            time = get_time(voice)
-            speak(time)
+            elif "time" in voice:
+                time = get_time(voice)
+                speak(time)
 
-        elif "joke" in voice:
-            joke = get_joke()
-            speak(joke)
+            elif "joke" in voice:
+                joke = get_joke()
+                speak(joke)
 
-        elif "play song" in voice:
-            speak("Playing song")
-            song = erase_from_voice(voice, "alexa", "play song")
-            play_on_youtube(song)
+            elif "song" in voice:
+                speak("Playing song")
+                song = erase_from_voice(voice, "alexa", "play song")
+                play_on_youtube(song)
+                print("Enjoy")
 
-        elif "where are we" in voice:
-            speak("We are in India")
+            elif "where are we" in voice:
+                speak("We are in India")
 
-        elif "quit" in voice or "exit" in voice:
-            speak("Goodbye! Have a great day!")
-            break
-        
+            elif "quit" in voice or "exit" in voice:
+                speak("Goodbye! Have a great day!")
+                stop()
+                break
+            else:
+                speak("I don't understand. Please try again.")
         else:
-            speak("I don't understand. Please try again.")
+            speak("Did you wish to ask something? Try saying something with alexa in it.")
+    except:
+        speak("There was a fatal error. GoodBye")
 
-    else:
-        speak("Did you wish to ask something? Try saying something with alexa in it.")
+

@@ -1,36 +1,31 @@
 import speech_recognition as sr
+import pyttsx3
 import datetime
+import pywhatkit
 import wikipedia
 import pyjokes
 from gnewsclient import gnewsclient
-from gtts import gTTS
-from playsound import playsound
-import webbrowser
-import urllib.parse
-import os
 
-__listener = sr.Recognizer()
-__default_voice = 40
+__engine = pyttsx3.init()
+__voices = __engine.getProperty("voices")
+#print(__voices[1])
+__engine.setProperty("voice", __voices[1].id) # 40 is for en_IN, Female voice
 
-__gTTS_lang = {
-        0: 'com',
-        7: 'co.uk',
-        10: 'ca',
-        11: 'com',
-        17: 'com.au',
-        28: 'ie',
-        32: 'co.in',
-        33: 'com',
-        37: 'co.za',
-        40: 'co.in',
-        41: 'com'
-    }
+def stop():
+    __engine.stop()
+
+def __listen_all_voices__():
+    index = 0
+    for voice in __voices:
+        print(i, voice, voice.id)
+        __engine.setProperty("voice", voice.id)
+        __engine.say("Hello World!")
+        __engine.runAndWait()
+        index += 1
 
 def set_voice(voice_num):
-    global __default_voice
-
     if voice_num in [0, 7, 10, 11, 17, 28, 32, 33, 37, 40, 41]:
-        __default_voice = voice_num
+        __engine.setProperty("voice", __voices[voice_num].id)
     else:
         raise Exception("No voice number found!")
 
@@ -69,38 +64,34 @@ def speak(phrase, debug = True):
         speak_single(phrase)
         
 def speak_single(phrase, debug = True):
-    global __gTTS_lang, __default_voice
-
     if phrase == None or phrase.strip() == '':
         return
     phrase = phrase.strip()
 
     if debug:
         print(phrase)
-    
-    tts = gTTS(phrase, lang = 'en', tld = __gTTS_lang[__default_voice])
-    tts.save("rec.mp3")
-    playsound("rec.mp3")
-    os.remove("rec.mp3")
-
+    __engine.say(phrase)
+    __engine.runAndWait()
 ############# Listening #################
 def listen():
+    r = sr.Recognizer()
     voice_input = ""
     try:
         print("Listening...")
+        r.pause_threshold = 1
         with sr.Microphone() as source:
-            voice = __listener.listen(source)
-            voice_input = __listener.recognize_google(voice)
+            voice = r.listen(source)
+            voice_input = r.recognize_google(voice, language ='en-in')
             voice_input = voice_input.lower()
-    except:
-        print("Error in taking voice input")
+    except Exception as e:
+        print("Error in taking voice input", e)
     return voice_input
 
 ############# Google News #################
 def get_google_news(debug = False):
     client = gnewsclient.NewsClient(language = 'english',
                                     location = 'India',
-                                    max_results=10)
+                                    max_results=3)
     news_to_str = ''
     for news in client.get_news():
         news_to_str += (news['title'] + ".\n")
@@ -171,6 +162,4 @@ def convert_time(utc_time, code, debug = False):
 ############# Playing Song #################
 def play_on_youtube(song):
     speak("playing " + song)
-    webbrowser.open("https://www.youtube.com/results?search_query=" + urllib.parse.quote_plus(song))
-
-    
+    yield pywhatkit.playonyt(song)
