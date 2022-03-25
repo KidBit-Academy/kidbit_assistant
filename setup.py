@@ -1,6 +1,6 @@
 import setuptools
 
-version = '1.1.4'
+version = '1.1.5'
 setuptools.setup(
   name = 'kidbit_assistant',
   version = version,
@@ -16,14 +16,19 @@ setuptools.setup(
           'pywhatkit==5.3',
           'wikipedia==1.4.0',
           'pyjokes==0.6.0',
-          'gnewsclient==1.12'
+          'gnewsclient==1.12',
+          'pyttsx3==2.90',
+          'Levenshtein==0.18.1',
+          'Flask==2.0.3',
+          'pipwin==0.5.2; platform_system=="Windows"',
+          'PyAudio==0.2.11'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
     'Intended Audience :: Developers',      # Define that your audience are developers
     'Topic :: Software Development :: Build Tools',
     'License :: OSI Approved :: MIT License',   # Again, pick a license
-    'Programming Language :: Python :: 3',      #Specify which pyhton versions that you want to support
+    'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.4',
     'Programming Language :: Python :: 3.5',
     'Programming Language :: Python :: 3.6',
