@@ -9,7 +9,7 @@ from gnewsclient import gnewsclient
 __engine = pyttsx3.init()
 __voices = __engine.getProperty("voices")
 #print(__voices[1])
-__engine.setProperty("voice", __voices[1].id) # 40 is for en_IN, Female voice
+__engine.setProperty("voice", __voices[40].id) # 40 is for en_IN, Female voice
 
 def stop():
     __engine.stop()
