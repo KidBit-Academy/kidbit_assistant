@@ -2,7 +2,7 @@ import setuptools
 import os
 import platform
 
-version = '1.1.8'
+version = '1.1.9'
 setuptools.setup(
   name = 'kidbit_assistant',
   version = version,
