@@ -1,7 +1,5 @@
 from main import *
 
-import sys
-    
 def get_time(voice):
     time_in_ist = "" 
     try:
@@ -13,8 +11,12 @@ def get_time(voice):
     
     return time_in_ist
 
+add_custom_joke("Joke 1")
+add_custom_joke("Joke 2")
+
 while True:
     voice = listen()
+    set_voice(40)
     print(voice)
     try:
         if "alexa" in voice:
@@ -28,10 +30,10 @@ while True:
                 speak(time)
 
             elif "joke" in voice:
-                joke = get_joke()
+                joke = get_custom_joke()
                 speak(joke)
 
-            elif "song" in voice:
+            elif "play song" in voice:
                 speak("Playing song")
                 song = erase_from_voice(voice, "alexa", "play song")
                 play_on_youtube(song)
@@ -44,6 +46,28 @@ while True:
                 speak("Goodbye! Have a great day!")
                 stop()
                 break
+            
+            elif "calculate" in voice:
+                speak("What do you want to do?")
+                voice2 = listen()
+                if "add" in voice2:
+                    speak("Speak number 1")
+                    n1 = int(listen())
+                    speak("Number 1 is ", n1)
+                    speak("Speak number 2")
+                    n2 = int(listen())
+                    speak("Number 2 is ", n1)
+                    speak("Addition of two numbers is ", n1 + n2)
+
+                elif "subtract" in voice2:
+                    speak("Speak number 1")
+                    n1 = int(listen())
+                    print("Number 1 is:", n1)
+                    speak("Speak number 2")
+                    n2 = int(listen())
+                    print("Number 2 is:", n2)
+                    speak("Subtraction of two numbers is ", n1 - n2)
+
             else:
                 speak("I don't understand. Please try again.")
         else:
