@@ -2,18 +2,18 @@ import setuptools
 import os
 import platform
 
-version = '1.1.9'
+version = '1.2.0'
 setuptools.setup(
   name = 'kidbit_assistant',
   version = version,
   license='MIT',
   description = 'Design your Own Assistant',
   author = 'KidBit',
-  author_email = 'kidbitacademy@gmail.com',   
+  author_email = 'kidbitacademy@gmail.com',
   url = 'https://github.com/KidBit-Academy/kidbit_assistant',
   download_url = 'https://github.com/KidBit-Academy/kidbit_assistant/archive/refs/tags/v' + version + '.tar.gz',
-  keywords = ['ALEXA', 'BOT', 'CODING', 'KIDS', 'KIDBIT', 'ASSISTANT'],  
-  install_requires=[        
+  keywords = ['ALEXA', 'BOT', 'CODING', 'KIDS', 'KIDBIT', 'ASSISTANT'],
+  install_requires=[
           'SpeechRecognition==3.8.1',
           'pywhatkit==5.3',
           'wikipedia==1.4.0',

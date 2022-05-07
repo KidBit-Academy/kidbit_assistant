@@ -10,7 +10,7 @@ from gnewsclient import gnewsclient
 __custom_joke = []
 __engine = pyttsx3.init()
 __voices = __engine.getProperty("voices")
-__engine.setProperty("voice", __voices[1].id) # 40 is for en_IN, Female voice
+__engine.setProperty("voice", __voices[0].id) # 40 is for en_IN, Female voice
 
 def stop():
   __engine.stop()
@@ -18,22 +18,22 @@ def stop():
 def get_voice_id(voice_num):
   global __engine, __voices
   num_to_name = {
-    0: 'Alex',    
-    7: 'Daniel',  
-    10: 'Fiona',   
-    11: 'Fred',    
-    17: 'Karen',   
-    28: 'Moira',   
-    32: 'Rishi',   
+    0: 'Alex',
+    7: 'Daniel',
+    10: 'Fiona',
+    11: 'Fred',
+    17: 'Karen',
+    28: 'Moira',
+    32: 'Rishi',
     33: 'Samantha',
-    37: 'Tessa',   
-    40: 'Veena',   
+    37: 'Tessa',
+    40: 'Veena',
     41: 'Victoria'
   }
 
   i = 0
   for voice in __voices:
-    if voice_num in num_to_name and voice.name == num_to_name[voice_num]:            
+    if voice_num in num_to_name and voice.name == num_to_name[voice_num]:
       return i
     elif voice_num not in num_to_name and 'en_IN' in voice.languages:
       return i
@@ -50,7 +50,7 @@ def set_voice(voice_num):
   except:
     pass
   __engine.setProperty("voice", __voices[v_id].id)
-    
+
 
 def add_custom_joke(joke):
   global __custom_joke
@@ -60,22 +60,22 @@ def add_custom_joke(joke):
 
 ############# Misc Functions #################
 def erase_from_voice(voice, *phrases, debug = False):
-  if voice == None or voice.strip() == '': 
+  if voice == None or voice.strip() == '':
     return ""
 
-  if phrases == None: 
+  if phrases == None:
     return ""
 
   voice_filtered = voice.strip()
 
   for arg in phrases:
     voice_filtered = voice_filtered.replace(arg,"").strip()
-  
+
   if debug:
     print("Voice:", voice)
     print("Phrase:", phrase)
     print("Voice filtered:", voice_filtered)
-  
+
   return voice_filtered
 
 def get_joke():
@@ -92,7 +92,7 @@ def speak(phrase, *args, debug = True):
   phrase = str(phrase).strip()
   if phrase == '':
     return
-  
+
   if "\n" in phrase:
     [speak_single(curr, debug) for curr in phrase.split("\n")]
   else:
@@ -110,7 +110,7 @@ def speak(phrase, *args, debug = True):
       speak_single(curr)
 
 
-    
+
 def speak_single(phrase, debug = True):
   if phrase == None or phrase.strip() == '':
     return
@@ -167,7 +167,7 @@ def convert_time(utc_time, code, debug = False):
   elif "aedt" in code:
     hours = 11
     minutes = 0
-  
+
   elif "pdt" in code:
     hours = -7
     minutes = 0
@@ -186,7 +186,7 @@ def convert_time(utc_time, code, debug = False):
 
   elif "sast" in code:
     hours = 2
-    minutes = 0 
+    minutes = 0
 
   elif "jst" in code:
     hours = 9
