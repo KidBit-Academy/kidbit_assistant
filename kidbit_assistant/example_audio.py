@@ -1,4 +1,4 @@
-from main import *
+from audio import *
 
 def get_time(voice):
     time_in_ist = "" 
